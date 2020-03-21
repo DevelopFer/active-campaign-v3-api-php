@@ -29,10 +29,10 @@ try{
         echo "List successfully created \n";
         var_dump($response->body->list);
     }else{
-        if($response->body->message){
+        if( isset($response->body->message) ){
             echo $response->body->message."\n";
         }
-        if($response->body->error){
+        if( isset($response->body->error) ){
             echo $response->body->error."\n";
         }
     }

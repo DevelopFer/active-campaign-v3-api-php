@@ -15,10 +15,10 @@ try {
     if ($response->success) {
         echo "Contact successfully created";
     } else {
-        if ($response->body->message) {
+        if (isset($response->body->message)) {
             echo $message;
         }
-        if ($response->body->errors) {
+        if (isset($response->body->errors)) {
             foreach ($response->body->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";

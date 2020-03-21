@@ -21,10 +21,10 @@ try{
     if($response->success){
         echo "Tag successfully created";
     }else{
-        if($response->body->message){
+        if(isset($response->body->message)){
             echo $response->body->message."\n";
         }
-        if($response->body->error){
+        if(isset($response->body->error)){
             echo $response->body->error."\n";
         }
     }

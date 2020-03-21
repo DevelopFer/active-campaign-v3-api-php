@@ -17,7 +17,7 @@ try{
         echo "Tags found"."\n";
         var_dump($response->body->tags);
     }else{
-        if($response->body->message){
+        if(isset($response->body->message)){
             echo $response->body->message."\n";
         }
         if($response->body->error){

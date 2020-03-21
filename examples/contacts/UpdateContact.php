@@ -25,10 +25,10 @@ try {
         echo "Contact successfully updated";
         var_dump($response->body->contact);
     } else {
-        if ($response->body->message) {
+        if (isset($response->body->message)) {
             echo $response->body->message;
         }
-        if ($response->body->errors) {
+        if (isset($response->body->errors)) {
             foreach ($response->body->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";

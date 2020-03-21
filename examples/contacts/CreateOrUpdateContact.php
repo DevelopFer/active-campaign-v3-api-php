@@ -24,10 +24,10 @@ try {
         echo "Contact successfully sync";
         var_dump($response->body->contact);
     } else {
-        if ($response->message) {
-            echo $response->message;
+        if (isset($response->body->message)) {
+            echo $response->body->message;
         }
-        if ($response->errors) {
+        if (isset($response->errors)) {
             foreach ($response->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";

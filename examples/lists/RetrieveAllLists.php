@@ -17,10 +17,10 @@ try{
         echo "Lists found \n";
         var_dump($response->body->lists);
     }else{
-        if($response->body->message){
+        if(isset($response->body->message)){
             echo $response->body->message."\n";
         }
-        if($response->body->error){
+        if(isset($response->body->error)){
             echo $response->body->error."\n";
         }
     }
