@@ -2,16 +2,16 @@ use WebforceHQ\ActiveCampaign\ActiveCampaign;
 use WebforceHQ\ActiveCampaign\models\ActiveCampaignContact;
 
 
-$url = "https://webforcehq55689.api-us1.com";
-$key = "deb5b7d7d1eca58523dcd81ad5f91881dae00c1c00d8a155569d53adadcb5d900add1de9";
+$url = "<https://YOUR_USER.api-us1.com>";
+$key = "<YOUR_TOKEN_KEY>";
 
 $client = new ActiveCampaign();
 $client->initialize($url, $key);
 
 $contact = new ActiveCampaignContact();
-$contact->setEmail("aferogobs20@gmail.com");
-$contact->setFirstName("Fernando");
-$contact->setLastName("Ordoñez");
+$contact->setEmail("jhon_doe@gmail.com");
+$contact->setFirstName("Jhon");
+$contact->setLastName("Doe");
 $contact->setPhone("+529985656464");
 
 $contacts = $client->contacts();

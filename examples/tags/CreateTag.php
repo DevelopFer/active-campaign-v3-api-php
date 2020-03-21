@@ -2,8 +2,8 @@ use WebforceHQ\ActiveCampaign\ActiveCampaign;
 use WebforceHQ\ActiveCampaign\models\ActiveCampaignTag;
 
 
-$url = "https://webforcehq55689.api-us1.com";
-$key = "deb5b7d7d1eca58523dcd81ad5f91881dae00c1c00d8a155569d53adadcb5d900add1de9";
+$url = "<https://YOUR_USER.api-us1.com>";
+$key = "<YOUR_TOKEN_KEY>";
 
 $client = new ActiveCampaign();
 $client->initialize($url, $key);
