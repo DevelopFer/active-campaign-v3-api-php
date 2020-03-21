@@ -12,10 +12,10 @@ $client->initialize($url, $key);
 $client = new ActiveCampaign();
 $client->initialize($url, $key);
 $contact = new ActiveCampaignContact();
-$contact->setEmail("aferogobs8@gmail.com");
-$contact->setFirstName("Fernando");
-$contact->setLastName("Ordoñez");
-$contact->setPhone("+529981510858");
+$contact->setEmail("jhon_doe8@gmail.com");
+$contact->setFirstName("Jhon");
+$contact->setLastName("Doe");
+$contact->setPhone("+52989898645");
 
 $contacts = $client->contacts();
 try {
