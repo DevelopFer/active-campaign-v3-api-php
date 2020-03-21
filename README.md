@@ -2,13 +2,19 @@
 Implementation for consuming ActiveCampaign's v3 API
 
 
-#Note:
+# Note:
 This is a beta version for this library, the main goal is to consume the ActiveCampaign's V3 API. 
 
-#Required
+# Required
 An ActiveCampaign's account is required. You can sign up https://www.activecampaign.com/
 
-#Models Implemented
+# Installation
+
+```php
+composer require webforcehq/activecampaign-v3-api-php
+```
+
+# Models Implemented
 <ul>
   <li>
     Contacts
@@ -24,7 +30,7 @@ An ActiveCampaign's account is required. You can sign up https://www.activecampa
   </li>
 </ul>
 
-#Example of using this library
+# Example of using this library
 
 ```php
 
