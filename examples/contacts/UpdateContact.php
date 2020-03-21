@@ -21,15 +21,15 @@ $contact->setId(5);
 $contacts = $client->contacts();
 try {
     $response = $contacts->update($contact);
-    var_dump($response);
-    if ($response->contact) {
+    if ($response->success) {
         echo "Contact successfully updated";
+        var_dump($response->body->contact);
     } else {
-        if ($response->message) {
-            echo $response->message;
+        if ($response->body->message) {
+            echo $response->body->message;
         }
-        if ($response->errors) {
-            foreach ($response->errors as $error) {
+        if ($response->body->errors) {
+            foreach ($response->body->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";
                 echo $error->code . "\n";

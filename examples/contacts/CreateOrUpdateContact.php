@@ -20,9 +20,9 @@ $contact->setPhone("+52989898645");
 $contacts = $client->contacts();
 try {
     $response = $contacts->createOrUpdate($contact);
-    var_dump($response);
-    if ($response->contact) {
+    if ($response->success) {
         echo "Contact successfully sync";
+        var_dump($response->body->contact);
     } else {
         if ($response->message) {
             echo $response->message;

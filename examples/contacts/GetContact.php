@@ -12,14 +12,14 @@ $contacts = $client->contacts();
 try {
     $response = $contacts->retrieve(5);
     var_dump($response);
-    if ($response->contact) {
+    if ($response->success) {
         echo "Contact successfully created";
     } else {
-        if ($response->message) {
+        if ($response->body->message) {
             echo $message;
         }
-        if ($response->errors) {
-            foreach ($response->errors as $error) {
+        if ($response->body->errors) {
+            foreach ($response->body->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";
                 echo $error->code . "\n";

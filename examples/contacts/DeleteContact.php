@@ -14,14 +14,14 @@ $contacts = $client->contacts();
 try {
     $response = $contacts->delete(4);
     var_dump($response);
-    if ($response->contact) {
+    if ($response->success) {
         echo "Contact successfully deleted";
     } else {
-        if ($response->message) {
-            echo $response->message;
+        if ($response->body->message) {
+            echo $response->body->message;
         }
-        if ($response->errors) {
-            foreach ($response->errors as $error) {
+        if ($response->body->errors) {
+            foreach ($response->body->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";
                 echo $error->code . "\n";

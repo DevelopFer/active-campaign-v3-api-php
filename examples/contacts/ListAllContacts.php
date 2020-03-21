@@ -13,15 +13,15 @@ $client->initialize($url, $key);
 $contacts = $client->contacts();
 try {
     $response = $contacts->listAll();
-    var_dump($response);
-    if ($response->contacts) {
+    if ($response->success) {
         echo "Contacts found";
+        var_dump($response->body->contacts);
     } else {
-        if ($response->message) {
-            echo $response->message;
+        if ($response->body->message) {
+            echo $response->body->message;
         }
-        if ($response->errors) {
-            foreach ($response->errors as $error) {
+        if ($response->body->errors) {
+            foreach ($response->body->errors as $error) {
                 echo $error->title . "\n";
                 echo $error->detail . "\n";
                 echo $error->code . "\n";
