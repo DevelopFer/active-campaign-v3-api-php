@@ -1,0 +1,83 @@
+<?php
+
+namespace WebforceHQ\ActiveCampaign\models;
+
+use WebforceHQ\ActiveCampaign\ActiveCampaign;
+
+class ActiveCampaignContact extends ActiveCampaign
+{
+    private $email;
+    private $firstname;
+    private $lastname;
+    private $phone;
+    private $id;
+    private $deleted;
+
+    public function setId(int $value){
+        $this->required($value, 'setId');
+        $this->id = $value;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function setEmail($value)
+    {
+        $this->required($value, 'setEmail');
+        $this->email = $value;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setFirstName($value)
+    {
+        $this->required($value, 'setFirstName');
+        $this->firstname = $value;
+    }
+
+    public function getFirstName()
+    {
+        return $this->firstname;
+    }
+
+    public function setLastName($value)
+    {
+        $this->required($value, 'setLastName');
+        $this->lastname = $value;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastname;
+    }
+
+    public function setPhone(int $value)
+    {
+        $this->required($value, 'setPhone');
+        $this->phone = $value;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function setDeleted(bool $value){
+        $this->deleted = $value;
+    }
+
+    public function getDeleted(){
+        return $this->deleted;
+    }
+
+    public function toArray()
+    {
+        $tmpContainer = [];
+        $tmpContainer['contact'] = get_object_vars($this);
+        return $tmpContainer;
+    }
+}
