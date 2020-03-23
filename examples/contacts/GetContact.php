@@ -16,7 +16,7 @@ try {
         echo "Contact successfully created";
     } else {
         if (isset($response->body->message)) {
-            echo $message;
+            echo $response->body->message
         }
         if (isset($response->body->errors)) {
             foreach ($response->body->errors as $error) {
