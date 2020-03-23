@@ -106,7 +106,6 @@ class ActiveCampaignList extends ActiveCampaign implements ActiveCampaignModel{
         $tmpContainer   = [
             'list' => $attributes
         ];
-        var_dump($tmpContainer);
         return $tmpContainer;
     }
 }

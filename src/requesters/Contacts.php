@@ -4,12 +4,14 @@ namespace WebforceHQ\ActiveCampaign\requesters;
 
 use WebforceHQ\ActiveCampaign\ActiveCampaign;
 use WebforceHQ\ActiveCampaign\models\ActiveCampaignContact;
+use WebforceHQ\ActiveCampaign\models\ActiveCampaignContactList;
 use WebforceHQ\Exceptions\ParametersRequiredException;
 
 class Contacts extends ActiveCampaign
 {
 
     const MAIN_ENDPOINT = "/api/3/contacts";
+    const CONTACT_LIST_ENDPOINT = "/api/3/contactLists";
     private $mainUrl;
     private $token;
 
@@ -60,17 +62,6 @@ class Contacts extends ActiveCampaign
             return $response;
     }
 
-    // public function updateListStatus(){
-    //     if (!$this->validateRequiredParameters($contact)) {
-    //         throw new ParametersRequiredException("Email contact is required");
-    //     }
-    //     $client = new Client($this->mainUrl);
-    //     $response = $client->getClient()
-    //         ->put(self::MAIN_ENDPOINT,(array)$contact)
-    //         ->send();
-    //     var_dump($response);
-    // }    
-
     public function update(ActiveCampaignContact $contact)
     {
         if( ! $contact->getId() ){
@@ -110,11 +101,19 @@ class Contacts extends ActiveCampaign
     public function listAutomations($contactId)
     {
         if (!$contactId) {
-            throw new ParametersRequiredException("Contact id is required for deleting action");
+            throw new ParametersRequiredException("Contact id is required for listing automations");
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
             ->get(self::MAIN_ENDPOINT."/{$contactId}/contactAutomations")
+            ->send();
+        return $response;
+    }
+
+    public function updateList(ActiveCampaignContactList $contactList){
+        $client = new Client($this->mainUrl, $this->token);
+        $response = $client->getClient()
+            ->post(self::CONTACT_LIST_ENDPOINT, $contactList->toArray())
             ->send();
         return $response;
     }
