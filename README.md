@@ -28,6 +28,15 @@ composer require webforcehq/activecampaign-v3-api-php
   <li>
     Group List
   </li>
+  <li>
+    Connections
+  </li>
+  <li>
+    E-Commerce Customers
+  </li>
+  <li>
+    E-Commerce Orders
+  </li>
 </ul>
 
 # Example of using this library

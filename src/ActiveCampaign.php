@@ -2,9 +2,11 @@
 
 namespace WebforceHQ\ActiveCampaign;
 
-
+use WebforceHQ\ActiveCampaign\requesters\Connections;
 use WebforceHQ\ActiveCampaign\requesters\Contacts;
+use WebforceHQ\ActiveCampaign\requesters\Customers;
 use WebforceHQ\ActiveCampaign\requesters\Lists;
+use WebforceHQ\ActiveCampaign\requesters\Orders;
 use WebforceHQ\ActiveCampaign\requesters\Tags;
 use WebforceHQ\Exceptions\EmptyCredentialsException;
 use WebforceHQ\Exceptions\ParametersRequiredException;
@@ -86,5 +88,23 @@ class ActiveCampaign
     public function lists()
     {
         return new Lists($this);
+    }
+
+    public function customers(){
+
+        return new Customers($this);
+        
+    }
+
+    public function orders(){
+
+        return new Orders($this);
+
+    }
+
+    public function connections(){
+
+        return new Connections($this);
+
     }
 }
