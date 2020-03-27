@@ -45,7 +45,7 @@ class ActiveCampaignContactList extends ActiveCampaign{
 
     public function toArray()
     {
-        $ignore = ['api_url','api_key'];
+        $ignore = ['api_url','api_key','id'];
         $tmpAttributes  = get_object_vars($this);
         $attributes     = array_diff_key($tmpAttributes, array_flip($ignore));
         $tmpContainer   = [
