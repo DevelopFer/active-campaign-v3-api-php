@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WebforceHQ\ActiveCampaign\requesters;
 
@@ -7,7 +7,8 @@ use WebforceHQ\ActiveCampaign\models\ActiveCampaignList;
 use WebforceHQ\ActiveCampaign\models\ActiveCampaignListGroup;
 use WebforceHQ\Exceptions\ParametersRequiredException;
 
-class Lists extends ActiveCampaign{
+class Lists extends ActiveCampaign
+{
 
     const MAIN_ENDPOINT = "/api/3/lists";
     const GROUPS_ENDPOINT = "/api/3/listGroups";
@@ -20,7 +21,8 @@ class Lists extends ActiveCampaign{
         $this->token    = $activeCampaignInstance->getApiKey();
     }
 
-    public function create(ActiveCampaignList $list){
+    public function create(ActiveCampaignList $list)
+    {
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
             ->post(self::MAIN_ENDPOINT, $list->toArray())
@@ -28,8 +30,9 @@ class Lists extends ActiveCampaign{
         return $response;
     }
 
-    public function retrieve($listId){
-        if( ! $listId ){
+    public function retrieve($listId)
+    {
+        if (!$listId) {
             throw new ParametersRequiredException("List id is required");
         }
         $client = new Client($this->mainUrl, $this->token);
@@ -39,31 +42,33 @@ class Lists extends ActiveCampaign{
         return $response;
     }
 
-    public function delete($listId){
-        if( ! $listId ){
+    public function delete($listId)
+    {
+        if (!$listId) {
             throw new ParametersRequiredException("List id is required");
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->delete(self::MAIN_ENDPOINT."/{$listId}")
+            ->delete(self::MAIN_ENDPOINT . "/{$listId}")
             ->send();
         return $response;
     }
 
-    public function listAll(){
+    public function listAll($params = null)
+    {
         $client = new Client($this->mainUrl, $this->token);
-        $response = $client->getClient()
+        $response = $client->getClient($params)
             ->get(self::MAIN_ENDPOINT)
             ->send();
         return $response;
     }
 
-    public function createListGroup(ActiveCampaignListGroup $listGroup){
+    public function createListGroup(ActiveCampaignListGroup $listGroup)
+    {
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
             ->post(self::GROUPS_ENDPOINT, $listGroup->toArray())
             ->send();
         return $response;
     }
-
 }

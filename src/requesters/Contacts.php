@@ -45,7 +45,7 @@ class Contacts extends ActiveCampaign
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->post(self::MAIN_ENDPOINT."/sync", $contact->toArray())
+            ->post(self::MAIN_ENDPOINT . "/sync", $contact->toArray())
             ->send();
         return $response;
     }
@@ -53,18 +53,18 @@ class Contacts extends ActiveCampaign
     public function retrieve($contactId)
     {
         if (!$contactId) {
-            throw new ParametersRequiredException("Contact id is required for deleting action");
+            throw new ParametersRequiredException("Contact id is required to retrieve contact info");
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
             ->get(self::MAIN_ENDPOINT . "/{$contactId}")
             ->send();
-            return $response;
+        return $response;
     }
 
     public function update(ActiveCampaignContact $contact)
     {
-        if( ! $contact->getId() ){
+        if (!$contact->getId()) {
             throw new ParametersRequiredException("Contact Id is required");
         }
         if (!$this->validateRequiredParameters($contact)) {
@@ -72,7 +72,7 @@ class Contacts extends ActiveCampaign
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->put(self::MAIN_ENDPOINT."/{$contact->getId()}", $contact->toArray())
+            ->put(self::MAIN_ENDPOINT . "/{$contact->getId()}", $contact->toArray())
             ->send();
         return $response;
     }
@@ -84,15 +84,15 @@ class Contacts extends ActiveCampaign
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->delete(self::MAIN_ENDPOINT."/{$contactId}")
+            ->delete(self::MAIN_ENDPOINT . "/{$contactId}")
             ->send();
         return $response;
     }
 
-    public function listAll()
+    public function listAll($params = null)
     {
         $client = new Client($this->mainUrl, $this->token);
-        $response = $client->getClient()
+        $response = $client->getClient($params)
             ->get(self::MAIN_ENDPOINT)
             ->send();
         return $response;
@@ -105,12 +105,13 @@ class Contacts extends ActiveCampaign
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->get(self::MAIN_ENDPOINT."/{$contactId}/contactAutomations")
+            ->get(self::MAIN_ENDPOINT . "/{$contactId}/contactAutomations")
             ->send();
         return $response;
     }
 
-    public function updateList(ActiveCampaignContactList $contactList){
+    public function updateList(ActiveCampaignContactList $contactList)
+    {
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
             ->post(self::CONTACT_LIST_ENDPOINT, $contactList->toArray())
@@ -125,7 +126,19 @@ class Contacts extends ActiveCampaign
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->get(self::MAIN_ENDPOINT."/{$contactId}/scoreValues")
+            ->get(self::MAIN_ENDPOINT . "/{$contactId}/scoreValues")
+            ->send();
+        return $response;
+    }
+
+    public function contactData($contactId)
+    {
+        if (!$contactId) {
+            throw new ParametersRequiredException("Contact id is required for getting it's data");
+        }
+        $client = new Client($this->mainUrl, $this->token);
+        $response = $client->getClient()
+            ->get(self::MAIN_ENDPOINT . "/{$contactId}/contactData")
             ->send();
         return $response;
     }
