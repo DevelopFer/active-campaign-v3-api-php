@@ -72,4 +72,16 @@ class Orders extends ActiveCampaign
             ->send();
         return $response;
     }
+
+    public function products($orderId)
+    {
+        if (!$orderId) {
+            throw new ParametersRequiredException("Order id is required");
+        }
+        $client = new Client($this->mainUrl, $this->token);
+        $response = $client->getClient()
+            ->get(self::MAIN_ENDPOINT . "/{$orderId}/orderProducts")
+            ->send();
+        return $response;
+    }
 }
