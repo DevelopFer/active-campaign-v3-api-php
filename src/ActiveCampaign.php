@@ -7,6 +7,7 @@ use WebforceHQ\ActiveCampaign\requesters\Contacts;
 use WebforceHQ\ActiveCampaign\requesters\Customers;
 use WebforceHQ\ActiveCampaign\requesters\Lists;
 use WebforceHQ\ActiveCampaign\requesters\Orders;
+use WebforceHQ\ActiveCampaign\requesters\OrderProducts;
 use WebforceHQ\ActiveCampaign\requesters\Tags;
 use WebforceHQ\Exceptions\EmptyCredentialsException;
 use WebforceHQ\Exceptions\ParametersRequiredException;
@@ -90,21 +91,23 @@ class ActiveCampaign
         return new Lists($this);
     }
 
-    public function customers(){
-
+    public function customers()
+    {
         return new Customers($this);
-        
     }
 
-    public function orders(){
-
+    public function orders()
+    {
         return new Orders($this);
-
     }
 
-    public function connections(){
-
+    public function connections()
+    {
         return new Connections($this);
+    }
 
+    public function orderProducts()
+    {
+        return new OrderProducts($this);
     }
 }

@@ -15,6 +15,7 @@ class Client
     private $url;
     private $token;
     private $headers;
+    private $params;
 
     public function __construct($mainUrl, $token)
     {
@@ -22,12 +23,13 @@ class Client
         $this->token = $token;
     }
 
-    public function getClient()
+    public function getClient($params = null)
     {
         $this->client = new Guzzle([
             'base_uri' => $this->url,
         ]);
         $this->setDefaultHeaders();
+        $this->setParams($params);
         return $this;
     }
 
@@ -48,7 +50,7 @@ class Client
 
     public function get($endpoint)
     {
-        $this->currentRequest = new Request('GET', $endpoint, $this->headers);
+        $this->currentRequest = new Request('GET', $endpoint . $this->params, $this->headers);
         return $this;
     }
 
@@ -71,27 +73,36 @@ class Client
             throw new UnsetRequestException();
         }
         try {
-            
+
             $responseObj = new \stdClass();
-            
+
             $response = $this->client->send($this->currentRequest);
 
-            
             $responseObj->success = true;
             $responseObj->code = $response->getStatusCode();
             $responseObj->body = json_decode($response->getBody());
-            
         } catch (ClientException $e) {
 
             $response       = $e->getResponse();
             $responseObj->code = $response->getStatusCode();
             $responseObj->body   = json_decode($response->getBody()->getContents());
             $responseObj->success = false;
-
         } finally {
 
             return $responseObj;
-
         }
+    }
+
+    public function setParams($params)
+    {
+        $query = '';
+        if ($params) {
+            $query .= '?';
+            $query .= collect($params)->map(function ($val, $key) {
+                return "{$key}=" . rawurlencode($val);
+            })->implode("&");
+        }
+
+        $this->params = $query;
     }
 }
