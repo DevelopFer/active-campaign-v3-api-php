@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-4": {
-            "WebforceHQ\\ActiveCampaign\\": "src/"
+            "WebforceHQ\\ActiveCampaign\\": "src/",
+            "WebforceHQ\\Exceptions\\": "src/Exceptions/"
         }
     },
     "autoload-dev": {
