@@ -2,16 +2,14 @@
     "name": "webforcehq/activecampaign-v3-api-php",
     "description": "PHP wrapper for ActiveCampaign API V3",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Fernando Ordoniez",
-            "email": "fordonez@webforcehq.com"
-        }
-    ],
-    
+    "authors": [{
+        "name": "Fernando Ordoniez",
+        "email": "fordonez@webforcehq.com"
+    }],
+
     "minimum-stability": "dev",
     "require": {
-        "guzzlehttp/guzzle": "~6.3"
+        "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7"
