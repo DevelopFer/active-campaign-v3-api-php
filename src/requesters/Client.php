@@ -96,11 +96,9 @@ class Client
     public function setParams($params)
     {
         $query = '';
+
         if ($params) {
-            $query .= '?';
-            $query .= collect($params)->map(function ($val, $key) {
-                return "{$key}=" . rawurlencode($val);
-            })->implode("&");
+            $query = '?' . http_build_query($params);
         }
 
         $this->params = $query;
