@@ -9,7 +9,7 @@ use WebforceHQ\Exceptions\ParametersRequiredException;
 
 class Contacts extends ActiveCampaign
 {
-
+    const SYNC_ENDPOINT = "/api/3/contact/sync";
     const MAIN_ENDPOINT = "/api/3/contacts";
     const CONTACT_LIST_ENDPOINT = "/api/3/contactLists";
     private $mainUrl;
@@ -31,7 +31,7 @@ class Contacts extends ActiveCampaign
         if (!$this->validateRequiredParameters($contact)) {
             throw new ParametersRequiredException("Email contact is required");
         }
-        $client = new  Client($this->mainUrl, $this->token);
+        $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
             ->post(self::MAIN_ENDPOINT, $contact->toArray())
             ->send();
@@ -45,7 +45,7 @@ class Contacts extends ActiveCampaign
         }
         $client = new Client($this->mainUrl, $this->token);
         $response = $client->getClient()
-            ->post(self::MAIN_ENDPOINT . "/sync", $contact->toArray())
+            ->post(self::SYNC_ENDPOINT, $contact->toArray())
             ->send();
         return $response;
     }
