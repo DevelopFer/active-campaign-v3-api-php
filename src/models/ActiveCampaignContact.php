@@ -7,8 +7,8 @@ use WebforceHQ\ActiveCampaign\ActiveCampaign;
 class ActiveCampaignContact extends ActiveCampaign
 {
     private $email;
-    private $firstname;
-    private $lastname;
+    private $firstName;
+    private $lastName;
     private $phone;
     private $id;
     private $deleted;
@@ -36,23 +36,23 @@ class ActiveCampaignContact extends ActiveCampaign
     public function setFirstName($value)
     {
         $this->required($value, 'setFirstName');
-        $this->firstname = $value;
+        $this->firstName = $value;
     }
 
     public function getFirstName()
     {
-        return $this->firstname;
+        return $this->firstName;
     }
 
     public function setLastName($value)
     {
         $this->required($value, 'setLastName');
-        $this->lastname = $value;
+        $this->lastName = $value;
     }
 
     public function getLastName()
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
     public function setPhone(int $value)
