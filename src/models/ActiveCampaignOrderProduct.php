@@ -15,7 +15,7 @@ class ActiveCampaignOrderProduct extends ActiveCampaign implements ActiveCampaig
     private $category;
     private $sku;
     private $description;
-    private $imgUrl;
+    private $imageUrl;
     private $productUrl;
 
     public function setName($value){
@@ -75,11 +75,11 @@ class ActiveCampaignOrderProduct extends ActiveCampaign implements ActiveCampaig
     }
 
     public function setImgUrl($value){
-        $this->imgUrl = $value;
+        $this->imageUrl = $value;
     }
 
     public function getImgUrl(){
-        return $this->imgUrl;
+        return $this->imageUrl;
     }
 
     public function setProductUrl($value){
