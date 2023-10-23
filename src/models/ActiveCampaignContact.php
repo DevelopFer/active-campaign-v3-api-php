@@ -55,7 +55,7 @@ class ActiveCampaignContact extends ActiveCampaign
         return $this->lastName;
     }
 
-    public function setPhone(int $value)
+    public function setPhone(string $value)
     {
         $this->required($value, 'setPhone');
         $this->phone = $value;
